@@ -1,0 +1,58 @@
+kafka.thread.pool.enable=false
+kafka.thread.pool=30
+kafka.thread.replicate.debug=1
+
+##########################################
+##
+## consumer
+##
+##########################################
+kafka.consumer.servers.name=cluster1,cluster2
+kafka.consumer.poll.timeout=5000
+kafka.consumer.poll.debug=false
+kafka.consumer.topic=testTopic
+# props
+kafka.consumer.props.bootstrap.servers.cluster1=127.0.0.1:8092,127.0.0.1:8093
+kafka.consumer.props.bootstrap.servers.cluster2=
+###zookeeper-
+kafka.consumer.props.zookeeper.connect.cluster1=127.0.0.1:8181,127.0.0.1:8182
+kafka.consumer.props.zookeeper.connect.cluster2=
+###-
+kafka.consumer.props.group.id=testGroupID
+kafka.consumer.props.enable.auto.commit=false
+kafka.consumer.props.auto.commit.interval.ms=5000
+###broker
+kafka.consumer.props.max.poll.records=400
+###zookeeper-
+kafka.consumer.props.rebalance.max.retries=2
+kafka.consumer.props.rebalance.backoff.ms=500
+kafka.consumer.props.auto.offset.reset=latest
+###-
+kafka.consumer.props.key.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+kafka.consumer.props.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+kafka.consumer.props=bootstrap.servers,\
+  group.id,\
+  enable.auto.commit,\
+  auto.commit.interval.ms,\
+  rebalance.max.retries,\
+  rebalance.backoff.ms,\
+  auto.offset.reset,\
+  key.deserializer,\
+  value.deserializer
+
+##########################################
+##
+## producer
+##
+##########################################
+kafka.producer.topic=BI_CustomerProfile_DEV
+# props
+kafka.producer.props.bootstrap.servers=127.0.0.1:8092,127.0.0.1:8093
+###default
+kafka.producer.props.acks=1
+kafka.producer.props.retries=0
+###default
+kafka.producer.props.batch.size=16384
+kafka.producer.props.linger.ms=1
+###default
+kafka.producer.props.buffer.memory=33554432

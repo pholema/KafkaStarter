@@ -1,0 +1,17 @@
+stages:
+  - build         # 编译代码。**必须**
+
+#####################################
+# 这一段，可以直接复制使用。          #
+#####################################
+build_job:
+  stage: build
+  tags:
+    - s7bispk06 #會去用 s7bispk06 這顆gitlab-runner去跑
+  image: docker.neg/bi/maven:3-jdk-8
+  before_script:
+    - mvn -v
+  script:
+    - mvn clean package install -DskipTests
+  only:
+    - master
